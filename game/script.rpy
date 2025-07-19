@@ -23,35 +23,42 @@ label start:
     #     for role, text in text_li:
     #         renpy.say(role, text)        # 显示文本
 
+    # 序章 燃烧的城市
     $ idx = 0
 
     while idx < len(text_li):
         $ name, sentence = text_li[idx]
 
-        # if key == 0:
-        #     scene bg room
-        #     show alice happy
-        #     play music "bgm.ogg"
-
-        # elif key == 1:
-        #     scene bg park
-        #     show bob normal
-        #     play music "bgm2.ogg"
+        # 引入火焰音效
+        if idx == 3:
+            play sound "audio/效果音/环境音/1.大火灼烧效果音.mp3" volume 0.8 fadein 1.0
+        # 燃烧的城市   
+        if idx == 11:
+            scene burnning_city with dissolve
+        # bgm in
+        if idx == 16:
+            play music "bgm/1.序章BGM.mp3" # fadeout 1.0 fadein 1.0
+        # selection
+        if idx == 58:
+            menu:
+                "求求你救救我！":
+                    stop music fadeout 1.0
 
         "[name]" "[sentence]"
 
+        if idx == len(text_li) - 1:
+            # 背景淡出
+            pass
+
+
         $ idx += 1
+
     
-    # 序章 燃烧的城市
-    scene burnning_city
-
-    play music "bgm/1.序章BGM.mp3" # fadeout 1.0 fadein 1.0
-
-    play sound "audio/效果音/环境音/1.大火灼烧效果音.mp3" volume 0.5
+    
 
 
     # 显示角色立绘
-    # show "images/差分/1_女主差分/1_女主_差分_普通.png"
+    
     show role stable at Position(xalign=0.3, yalign=1.0)
 
     # 此处显示各行对话。
