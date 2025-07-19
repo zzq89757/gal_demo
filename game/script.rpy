@@ -41,6 +41,7 @@ label start:
         # selection
         if idx == 58:
             menu:
+                # 引入分支0_1文本
                 "求求你救救我！":
                     stop music fadeout 1.0
 
