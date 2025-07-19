@@ -1,0 +1,9 @@
+audio
+gui
+images
+saves
+*.ttf
+*.txt
+.vscode
+cache
+*.rpy*[cm]
