@@ -282,13 +282,19 @@ screen navigation():
         style_prefix "navigation"
 
         xpos gui.navigation_xpos
-        yalign 0.5
+        ypos gui.navigation_ypos
+        # yalign 0.5
 
         spacing gui.navigation_spacing
 
         if main_menu:
 
-            textbutton _("开始游戏") action Start()
+            # textbutton _("开始游戏") action Start()
+            imagebutton:
+                # idle "gui/nevigation/start.png"
+                idle im.Scale("gui/nevigation/start.png", 240, 60)
+                
+                action Start()
 
         else:
 
@@ -296,9 +302,21 @@ screen navigation():
 
             textbutton _("保存") action ShowMenu("save")
 
-        textbutton _("读取游戏") action ShowMenu("load")
+        # textbutton _("读取游戏") action ShowMenu("load")
+        imagebutton:
+                idle im.Scale("gui/nevigation/continue.png", 240, 60)
+                action ShowMenu("history")
+        imagebutton:
+                idle im.Scale("gui/nevigation/load.png", 120, 60)
+                action ShowMenu("load")
 
-        textbutton _("设置") action ShowMenu("preferences")
+        # textbutton _("设置") action ShowMenu("preferences")
+        imagebutton:
+                idle im.Scale("gui/nevigation/gallary.png", 120, 60)
+                action ShowMenu("preferences")
+        imagebutton:
+                idle im.Scale("gui/nevigation/setting.png", 120, 60)
+                action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -308,17 +326,21 @@ screen navigation():
 
             textbutton _("标题菜单") action MainMenu()
 
-        textbutton _("关于") action ShowMenu("about")
+        # textbutton _("关于") action ShowMenu("about")
 
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        # if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
-            ## “帮助”对移动设备来说并非必需或相关。
-            textbutton _("帮助") action ShowMenu("help")
+        #     ## “帮助”对移动设备来说并非必需或相关。
+        #     textbutton _("帮助") action ShowMenu("help")
 
         if renpy.variant("pc"):
 
             ## 退出按钮在 iOS 上是被禁止使用的，在安卓和网页上也不是必要的。
-            textbutton _("退出") action Quit(confirm=not main_menu)
+            # textbutton _("退出") action Quit(confirm=not main_menu)
+            imagebutton:
+                idle im.Scale("gui/nevigation/exit.png", 120, 60)
+                
+                action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -349,8 +371,9 @@ screen main_menu():
     add Transform("gui/game_logo1.png",zoom=0.35) xpos 0.007 ypos 0.06 anchor (0, 0) 
 
     ## 此空框可使标题菜单变暗。
-    frame:
-        style "main_menu_frame"
+    # frame:
+    #     style "main_menu_frame"
+
 
     ## use 语句将其他的屏幕包含进此屏幕。标题屏幕的实际内容在导航屏幕中。
     use navigation
@@ -360,11 +383,11 @@ screen main_menu():
         vbox:
             style "main_menu_vbox"
 
-            text "[config.name!t]":
-                style "main_menu_title"
+            # text "[config.name!t]":
+            #     style "main_menu_title"
 
-            text "[config.version]":
-                style "main_menu_version"
+            # text "[config.version]":
+            #     style "main_menu_version"
 
 
 style main_menu_frame is empty
