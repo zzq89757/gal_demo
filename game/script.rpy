@@ -122,8 +122,8 @@ label start:
 
     # 显示角色立绘
     
-    # show role stable at Position(xalign=0.3, yalign=1.0)
 
     # 此处为游戏结尾。
-
+    role "试玩结束"
+    role "......"
     return
