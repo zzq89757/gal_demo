@@ -19,10 +19,28 @@ label start:
     # 进入序章世界观介绍 背景为纯黑 仅旁白 无角色发言
     scene black
     stop music fadeout 1.0
-    python:
-        for role, text in text_li:
-            renpy.say(role, text)        # 显示文本
-    
+    # python:
+    #     for role, text in text_li:
+    #         renpy.say(role, text)        # 显示文本
+
+    $ idx = 0
+
+    while idx < len(text_li):
+        $ name, sentence = text_li[idx]
+
+        # if key == 0:
+        #     scene bg room
+        #     show alice happy
+        #     play music "bgm.ogg"
+
+        # elif key == 1:
+        #     scene bg park
+        #     show bob normal
+        #     play music "bgm2.ogg"
+
+        "[name]" "[sentence]"
+
+        $ idx += 1
     
     # 序章 燃烧的城市
     scene burnning_city
