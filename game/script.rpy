@@ -8,7 +8,10 @@ image gate = im.Scale("images/bg/城门5.jpg", 1920, 1080) #根据你的分辨�
 image burnning_city = im.Scale("images/bg/火烧城市9.png", 1920, 1080) #根据你的分辨率调整
 # image role stable = "images/差分/8_npc_.png"
 image role stable = im.Scale("images/差分/1_女主差分/1_女主_差分_普通.png", 352,951)
- 
+
+init python:
+    from process_text import text_li
+
 
 
 # 游戏在此开始。
@@ -16,9 +19,11 @@ label start:
     # 进入序章世界观介绍 背景为纯黑 仅旁白 无角色发言
     scene black
     stop music fadeout 1.0
-    "djiajdia"
-
-    "dasda"
+    python:
+        for role, text in text_li:
+            renpy.say(role, text)        # 显示文本
+    
+    
     # 序章 燃烧的城市
     scene burnning_city
 
