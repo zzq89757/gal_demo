@@ -22,5 +22,20 @@ selection_0_1_text_li = json2li(r"E:\Ren\first_project\gal_demo\game\tl\Raw\fenz
 
 charpter1_text_li = json2li(r"E:\Ren\first_project\gal_demo\game\tl\Raw\zhangjie_1.json")
 
+selection_1_1_text_li = json2li(r"E:\Ren\first_project\gal_demo\game\tl\Raw\fenzhi1_1.json")
 
-print(charpter1_text_li)
+selection_1_2_text_li = json2li(r"E:\Ren\first_project\gal_demo\game\tl\Raw\fenzhi1_2.json")
+
+selection_1_3_text_li = json2li(r"E:\Ren\first_project\gal_demo\game\tl\Raw\fenzhi1_3.json")
+
+selection_2_1_text_li = json2li(r"E:\Ren\first_project\gal_demo\game\tl\Raw\fenzhi2_1 +-.json")
+
+selection_2_2_text_li = json2li(r"E:\Ren\first_project\gal_demo\game\tl\Raw\fenzhi2_2 +.json")
+
+selection_2_3_text_li = json2li(r"E:\Ren\first_project\gal_demo\game\tl\Raw\fenzhi2_3 -.json")
+
+charpter2_text_li = json2li(r"E:\Ren\first_project\gal_demo\game\tl\Raw\zhangjie_2.json")
+
+
+
+print(selection_1_1_text_li)
