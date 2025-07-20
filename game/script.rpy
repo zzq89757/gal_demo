@@ -376,6 +376,7 @@ label start:
                     renpy.say(role, text)
                 else:
                     renpy.say(None, text)
+        
         run(prologue_text_li,menu_dict["prologue"])
         run(charpter1_text_li,menu_dict["charpter1"])
         run(charpter2_text_li,menu_dict["charpter2"])
