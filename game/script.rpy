@@ -1,33 +1,42 @@
 ﻿# 游戏的脚本可置于此文件中。
-transform pos_1:
+transform pos_1(y=0):
     xalign 0.15
     yalign 0.5
     xanchor 0.5
     yanchor 0.4
+    yoffset y
 
-transform pos_2:
+
+transform pos_2(y=0):
     xalign 0.5
     yalign 0.5
     xanchor 0.5
     yanchor 0.4
+    yoffset y
 
-transform pos_3:
+
+transform pos_3(y=0):
     xalign 0.5
     yalign 0.5
     xanchor 0.5
     yanchor 0.4
+    yoffset y
 
-transform pos_4:
+
+transform pos_4(y=0):
     xalign 0.5
     yalign 0.5
     xanchor 0.5
     yanchor 0.4
+    yoffset y
 
-transform pos_5:
+
+transform pos_5(y=0):
     xalign 0.85
     yalign 0.5
     xanchor 0.5
     yanchor 0.4
+    yoffset y
 
 # 声明此游戏使用的角色。颜色参数可使角色姓名着色。
 # define role = Character("诺缇蕾雅")
@@ -208,6 +217,9 @@ label start:
         se_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/se") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))
         print(bgm_li)
         role_name_li = ["role", "angel", "dead", "empire", "rider", "boss_npc", "sister"]
+        yoffset_dict = {
+            "role":100, "angel":200, "dead":100, "empire":0, "rider":200, "boss_npc":0, "sister":0
+        }
         role_shown_li = [0] * 6
         role_expressions_dict = {"role": [
             None, "stable", "open_mouth", "happy",
@@ -336,7 +348,7 @@ label start:
                     if ch_show != 0:
                         e_motion = role_expressions_dict[role_name][ch_show]
                         # 渲染立绘 解析位置动作等
-                        renpy.show(f"{role_name} {e_motion}", at_list=[position_dict[ch_pos]])
+                        renpy.show(f"{role_name} {e_motion}", at_list=[position_dict[ch_pos](yoffset_dict[role_name])])
                         role_shown_li[i] = ch_show
                 # 菜单
                 if is_menu:
@@ -364,7 +376,7 @@ label start:
                     renpy.say(role, text)
                 else:
                     renpy.say(None, text)
-        run(prologue_text_li,menu_dict["prologue"])
+        # run(prologue_text_li,menu_dict["prologue"])
         run(charpter1_text_li,menu_dict["charpter1"])
         run(charpter2_text_li,menu_dict["charpter2"])
         run(charpter3_text_li,menu_dict["charpter3"])
