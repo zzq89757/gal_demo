@@ -45,7 +45,7 @@ define build.name = "gal_demo"
 define config.has_sound = True
 define config.has_music = True
 define config.has_voice = True
-
+define config.skip_delay = 30
 
 ## 为了让用户在音效或语音轨道上播放测试音频，请取消对下面一行的注释并设置播放的
 ## 样本声音。

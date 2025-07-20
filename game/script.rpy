@@ -13,10 +13,14 @@ image urben = im.Scale("images/bg/城市4.jpg", 1920, 1080) #根据你的分辨�
 image plain = im.Scale("images/bg/平原2.jpg", 1920, 1080) #根据你的分辨率调整
 image town = im.Scale("images/bg/市区10.jpg", 1920, 1080) #根据你的分辨率调整
 # image role stable = "images/差分/8_npc_.png"
-image role stable = im.Scale("images/差分/1_女主差分/1_女主_差分_普通.png", 700,1900)
-image angle close eye = im.Scale("images/差分/2_天使差分/2_天使_差分_闭眼.png", 1200,1900)
-image angle plain = im.Scale("images/差分/2_天使差分/2_天使_差分_普通.png", 1200,1900)
-image rider plain = im.Scale("images/差分/5_骑士差分/5_骑士_差分_普通.png", 600,1280)
+
+image role stable = Transform("images/差分/1_女主差分/1_女主_差分_普通.png", zoom=0.18)
+
+image angle close eye = Transform("images/差分/2_天使差分/2_天使_差分_闭眼.png", zoom=0.18)
+
+image angle plain = Transform("images/差分/2_天使差分/2_天使_差分_普通.png", zoom=0.18)
+
+image rider plain = Transform("images/差分/5_骑士差分/5_骑士_差分_普通.png", zoom=0.18)
 
 init python:
     import json

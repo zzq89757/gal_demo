@@ -3,6 +3,7 @@
 ################################################################################
 
 init offset = -1
+define start_button = im.FactorScale("gui/nevigation/start.png", 0.5)
 
 
 ################################################################################
@@ -292,7 +293,9 @@ screen navigation():
             # textbutton _("开始游戏") action Start()
             imagebutton:
                 # idle "gui/nevigation/start.png"
-                idle im.Scale("gui/nevigation/start.png", 240, 60)
+                # idle im.Scale("gui/nevigation/start.png", 240, 60)
+                # idle start_button
+                idle Transform("gui/nevigation/start.png", zoom=0.6)
                 
                 action Start()
 
@@ -304,18 +307,23 @@ screen navigation():
 
         # textbutton _("读取游戏") action ShowMenu("load")
         imagebutton:
-                idle im.Scale("gui/nevigation/continue.png", 240, 60)
+                # idle im.Scale("gui/nevigation/continue.png", 240, 60)
+                idle Transform("gui/nevigation/continue.png", zoom=0.6)
                 action ShowMenu("history")
         imagebutton:
-                idle im.Scale("gui/nevigation/load.png", 120, 60)
+                # idle im.Scale("gui/nevigation/load.png", 120, 60)
+                idle Transform("gui/nevigation/load.png", zoom=0.6)
                 action ShowMenu("load")
 
         # textbutton _("设置") action ShowMenu("preferences")
         imagebutton:
-                idle im.Scale("gui/nevigation/gallary.png", 120, 60)
+                # idle im.Scale("gui/nevigation/gallary.png", 120, 60)
+                idle Transform("gui/nevigation/gallary.png", zoom=0.6)
+                
                 action ShowMenu("preferences")
         imagebutton:
-                idle im.Scale("gui/nevigation/setting.png", 120, 60)
+                # idle im.Scale("gui/nevigation/setting.png", 120, 60)
+                idle Transform("gui/nevigation/setting.png", zoom=0.6)
                 action ShowMenu("preferences")
 
         if _in_replay:
@@ -338,8 +346,8 @@ screen navigation():
             ## 退出按钮在 iOS 上是被禁止使用的，在安卓和网页上也不是必要的。
             # textbutton _("退出") action Quit(confirm=not main_menu)
             imagebutton:
-                idle im.Scale("gui/nevigation/exit.png", 120, 60)
-                
+                # idle im.Scale("gui/nevigation/exit.png", 120, 60)
+                idle Transform("gui/nevigation/exit.png", zoom=0.6)
                 action Quit(confirm=not main_menu)
 
 
