@@ -74,7 +74,7 @@ label start:
         if idx == 1:
             scene forest with dissolve
             play music "bgm/22.战斗曲.mp3" # fadeout 1.0 fadein 1.0
-        "[name]" "[idx][sentence]"
+        "[name]" "[sentence]"
         # 女主立绘出现
         if idx == 2:
             show role stable at Position(xpos=0.5,ypos=-0.2,xanchor=0.5,yanchor=0) with dissolve
