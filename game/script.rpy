@@ -135,8 +135,8 @@ label start:
             show role stable at Position(xpos=0.12,ypos=-0.2,xanchor=0.5,yanchor=0):
                 linear 0.3 xoffset 340
             show angle plain at Position(xpos=0.9,ypos=0.2,xanchor=0.5,yanchor=0):
-                linear 0.08 xoffset -120
-                linear 0.08 xoffset 120
+                linear 0.03 xoffset -120
+                linear 0.03 xoffset 120
                 repeat 6
         if idx == 62:
             show role stable at Position(xpos=0.12,ypos=-0.2,xanchor=0.5,yanchor=0):
