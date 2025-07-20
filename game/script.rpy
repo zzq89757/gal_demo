@@ -126,6 +126,7 @@ image sister anger = Transform("images/差分/6_妹妹差分/6_妹妹_差分_普
 image sister sad = Transform("images/差分/6_妹妹差分/6_妹妹_差分_失落.png", zoom=0.14)
 
 init python:
+    config.layers += ["char_layer", "effect_layer"]
     position_dict = {
         1: pos_1,
         2: pos_2,
@@ -303,7 +304,7 @@ label start:
             ("(询问对方身份)", selection_8_3_text_li)]
         ],
         }
-
+        
         renpy.music.stop(fadeout=1.0)
         def move_to_pos_transform(pos_id: int, duration: float = 0.5):
             xalign_dict = {1: 0.15, 2: 0.3, 3: 0.5, 4: 0.7, 5: 0.85}
@@ -370,12 +371,19 @@ label start:
                     if ch_show != 0:
                         e_motion = role_expressions_dict[role_name][ch_show]
                         # 渲染立绘 解析位置动作等
-                        renpy.show(f"{role_name} {e_motion}", at_list=[position_dict[ch_pos](yoffset_dict[role_name])])
+                        if i == 0:
+                            renpy.show(f"{role_name} {e_motion}", at_list=[position_dict[ch_pos](yoffset_dict[role_name])], zorder = 10)
+                        else:
+                            renpy.show(f"{role_name} {e_motion}", at_list=[position_dict[ch_pos](yoffset_dict[role_name])])
+
                         role_shown_li[i] = ch_show
                     if ch_move and isinstance(ch_move, int) and 1 <= ch_move <= 5:
                         e_motion = role_expressions_dict[role_name][ch_show]
                         transform = move_to_pos_transform(ch_move)
-                        renpy.show(f"{role_name} {e_motion}", at_list=[transform])
+                        if i == 0:
+                            renpy.show(f"{role_name} {e_motion}", at_list=[transform], zorder = 10)
+                        else:
+                            renpy.show(f"{role_name} {e_motion}", at_list=[transform])
                     if ch_act == 1:
                         renpy.show(f"{role_name} {e_motion}", at_list=[shake_y])
                     elif ch_act == 2:
@@ -405,7 +413,7 @@ label start:
         
         
         # run(prologue_text_li,menu_dict["prologue"])
-        run(charpter1_text_li,menu_dict["charpter1"])
+        # run(charpter1_text_li,menu_dict["charpter1"])
         run(charpter2_text_li,menu_dict["charpter2"])
         run(charpter3_text_li,menu_dict["charpter3"])
         run(charpter4_text_li,menu_dict["charpter4"])
