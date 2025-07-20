@@ -38,6 +38,28 @@ transform pos_5(y=0):
     yanchor 0.4
     yoffset y
 
+transform move_to_target(xpos_target=0.5, duration=0.5):
+    linear duration xpos xpos_target
+
+# Y轴大幅度慢速抖动 3 次
+transform shake_y:
+    linear 0.15 yoffset -400
+    linear 0.15 yoffset 400
+    linear 0.15 yoffset -400
+    linear 0.15 yoffset 400
+    linear 0.15 yoffset 0
+
+# X轴小幅度快速抖动 5 次
+transform shake_x:
+    linear 0.05 xoffset -120
+    linear 0.05 xoffset 120
+    linear 0.05 xoffset -120
+    linear 0.05 xoffset 120
+    linear 0.05 xoffset -120
+    linear 0.05 xoffset 120
+    linear 0.05 xoffset 0
+
+
 # 声明此游戏使用的角色。颜色参数可使角色姓名着色。
 # define role = Character("诺缇蕾雅")
 
@@ -208,8 +230,6 @@ init python:
 label start:
     # scene burnning_city
     scene black
-    # $ renpy.show("burnning_city")
-    # $ renpy.music.play("bgm/1.序章BGM.mp3", channel='music', fadein=1.0, if_changed=True)
     python:
         bg_li = ["black", "forest","plain", "village", "urben", "gate", "river", "ruin", "stone_road", "burnning_city", "town", "urben night", "room night", "room"]
         bgm_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/bgm") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))[1:]
@@ -285,6 +305,11 @@ label start:
         }
 
         renpy.music.stop(fadeout=1.0)
+        def move_to_pos_transform(pos_id: int, duration: float = 0.5):
+            xalign_dict = {1: 0.15, 2: 0.3, 3: 0.5, 4: 0.7, 5: 0.85}
+            xpos_value = xalign_dict.get(pos_id, 0.5)
+
+            return move_to_target(xpos_value, duration)
 
         def run(text_li,menu_li=[]) -> None:
             menu_idx = 0
@@ -332,9 +357,6 @@ label start:
                     current_se_idx = se_idx
 
                 # # 角色
-                # if char_info and char_info[0]:
-                #     ch_show, ch_pos, ch_move, ch_act = char_info
-                #     renpy.show(ch_show, at_list=[])
                 for i in range(6):
                     ch_show, ch_pos, ch_move, ch_act = char_info[i]
                     role_name = role_name_li[i]
@@ -350,6 +372,15 @@ label start:
                         # 渲染立绘 解析位置动作等
                         renpy.show(f"{role_name} {e_motion}", at_list=[position_dict[ch_pos](yoffset_dict[role_name])])
                         role_shown_li[i] = ch_show
+                    if ch_move and isinstance(ch_move, int) and 1 <= ch_move <= 5:
+                        e_motion = role_expressions_dict[role_name][ch_show]
+                        transform = move_to_pos_transform(ch_move)
+                        renpy.show(f"{role_name} {e_motion}", at_list=[transform])
+                    if ch_act == 1:
+                        renpy.show(f"{role_name} {e_motion}", at_list=[shake_y])
+                    elif ch_act == 2:
+                        renpy.show(f"{role_name} {e_motion}", at_list=[shake_x])
+                    
                 # 菜单
                 if is_menu:
                     choice_list = menu_li[menu_idx]  # 这是列表：多组 (选项文本, 剧情)
@@ -363,21 +394,17 @@ label start:
                     run(inner_text_li)  # 玩家选中后再进入支线
 
                     menu_idx += 1
-                    # run_li=[]
-                    # for sele in menu_li[menu_idx]:
-                    #     choice_text, inner_text_li = sele
-                    #     run_li.append((choice_text, run(inner_text_li)))
-                    # choice = renpy.display_menu(run_li)
-                    # renpy.say(None, f"你选择了 {choice}")
-                    # menu_idx += 1
+                    
 
                 # 显示对话
                 if role:
                     renpy.say(role, text)
                 else:
                     renpy.say(None, text)
+
         
-        run(prologue_text_li,menu_dict["prologue"])
+        
+        # run(prologue_text_li,menu_dict["prologue"])
         run(charpter1_text_li,menu_dict["charpter1"])
         run(charpter2_text_li,menu_dict["charpter2"])
         run(charpter3_text_li,menu_dict["charpter3"])
