@@ -78,19 +78,18 @@ label start:
 
         # 引入火焰音效
         if idx == 3:
-            play sound "audio/效果音/环境音/1.大火灼烧效果音.mp3" volume 0.8 fadein 1.0
+            play sound "audio/效果音/环境音/1.大火灼烧效果音.mp3" volume 0.8 fadein 1.0 loop
         # 燃烧的城市   
         if idx == 11:
             scene burnning_city with dissolve
         # bgm in
         if idx == 16:
-            play music "bgm/1.序章BGM.mp3" # fadeout 1.0 fadein 1.0
+            play music "bgm/1.序章BGM.mp3" fadein 1.0 # fadeout 1.0 fadein 1.0
         # selection
         if idx == 58:
             menu:
-                # 停止BGN 引入分支0_1文本
+                # 引入分支0_1文本
                 "求求你救救我！":
-                    stop music fadeout 1.0
                     $ j = 0
                     while j < len(selection_0_1_text_li):
                         $ name_s, sentence_s = selection_0_1_text_li[j]
@@ -102,6 +101,7 @@ label start:
         if idx == len(prologue_text_li) - 1:
             # 背景淡出
             scene black with dissolve
+            stop sound
             pass
 
 
@@ -114,15 +114,15 @@ label start:
         # 背景跳转至森林 引入bgm
         if idx == 1:
             scene forest with dissolve
-            play music "bgm/22.战斗曲.mp3" # fadeout 1.0 fadein 1.0
+            play music "bgm/22.战斗曲.mp3" fadein 1.0 # fadeout 1.0 fadein 1.0
         "[name]" "[sentence]"
         # 女主立绘出现
         if idx == 2:
             show role stable at Position(xpos=0.5,ypos=-0.2,xanchor=0.5,yanchor=0) with dissolve
         if idx == 3:
             hide role stable at Position(xpos=0.5,ypos=-0.2,xanchor=0.5,yanchor=0) with dissolve
-        if idx == 10:
-            play music "bgm/1.序章BGM.mp3"  fadein 1.0
+        # if idx == 10:
+        #     play music "bgm/1.序章BGM.mp3"  fadein 1.0
         if idx == 14:
             show role stable at Position(xpos=0.5,ypos=-0.2,xanchor=0.5,yanchor=0) with dissolve
         if idx == 16:
@@ -131,7 +131,7 @@ label start:
             play sound "audio/效果音/环境音/2.拨开草丛.mp3" volume 0.8 fadein 1.0
             play sound "audio/效果音/环境音/4.走过草丛的音效.mp3" volume 0.8 fadein 1.0 loop
         if idx == 19:
-            stop sound
+            stop sound 
         if idx == 27:
             show role stable at Position(xpos=0.5,ypos=-0.2,xanchor=0.5,yanchor=0) with dissolve
         if idx == 28:
