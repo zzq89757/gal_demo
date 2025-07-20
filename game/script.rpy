@@ -138,12 +138,11 @@ label start:
             # if char_info and char_info[0]:
             #     ch_show, ch_pos, ch_move, ch_act = char_info
             #     renpy.show(ch_show, at_list=[])
-
-            for ch in char_info:
-                for i in range(6):
-                    ch_show, ch_pos, ch_move, ch_act = ch[i]
-                    if ch_show == 0:continue
-                    # 渲染立绘 解析位置动作等
+            for i in range(6):
+                ch_show, ch_pos, ch_move, ch_act = char_info[i]
+                if ch_show == 0:continue
+                # 渲染立绘 解析位置动作等
+                renpy.show("role stable")
             # 菜单
             if is_menu:
                 pass
