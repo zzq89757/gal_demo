@@ -144,7 +144,9 @@ label start:
                     ch_show, ch_pos, ch_move, ch_act = ch[i]
                     if ch_show == 0:continue
                     # 渲染立绘 解析位置动作等
-
+            # 菜单
+            if is_menu:
+                pass
 
             # 显示对话
             if role:
