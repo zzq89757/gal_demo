@@ -165,6 +165,13 @@ init python:
     ## 目录中的 ogg 文件，“**.psd”匹配项目中任何位置的 psd 文件。
 
     ## 将文件列为 None 来使其从构建的发行版中排除。
+    ## 若要封装文件，需将其列为“archive”。
+
+    # 定义两个归档文件。
+    build.archive("scripts", "all")
+    build.archive("images", "all")
+    build.archive("texts", "all")
+    build.archive("audios", "all")
 
     build.classify('**~', None)
     build.classify('**.bak', None)
@@ -172,7 +179,6 @@ init python:
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
 
-    ## 若要封装文件，需将其列为“archive”。
 
     build.classify('game/**.png', 'images')
     build.classify('game/**.jpg', 'images')
