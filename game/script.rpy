@@ -341,20 +341,18 @@ label start:
                 # # 音效
                 if bgs_idx != 0 and bgs_idx != current_bgs_idx:
                     bgs = bgs_li[bgs_idx]
-                    renpy.music.play(bgs, channel = "sound", fadein=1.0)
-                    # renpy.music.play("bgm/1.序章BGM.mp3", fadein=1.0)
+                    renpy.music.play(bgs, channel = "sound", fadein=1.5, loop=True)
                     current_bgs_idx = bgs_idx
                 if bgs_idx == 0 and current_bgs_idx != 0:
-                    renpy.music.stop(channel = "sound", fadeout=1.0)
+                    renpy.music.stop(channel = "sound", fadeout=3.0)
                     current_bgs_idx = bgs_idx
                 # # se
                 if se_idx != 0 and se_idx != current_se_idx:
                     se = se_li[se_idx]
-                    renpy.music.play(se, channel = "sound", fadein=1.0)
-                    # renpy.music.play("bgm/1.序章BGM.mp3", fadein=1.0)
+                    renpy.music.play(se, channel = "sound", fadein=1.5)
                     current_se_idx = se_idx
                 if se_idx == 0 and current_se_idx != 0:
-                    renpy.music.stop(channel = "sound", fadeout=1.0)
+                    renpy.music.stop(channel = "sound", fadeout=3.0)
                     current_se_idx = se_idx
 
                 # # 角色
