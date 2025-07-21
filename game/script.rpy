@@ -160,7 +160,7 @@ init python:
                 ch_show, ch_pos = entry.get(f"character_{i}", "")
                 ch_move = entry.get(f"character_{i}_Move", "")
                 ch_act = entry.get(f"character_{i}_Action", "")
-                char_info.append([ch_show, ch_pos, ch_move[0], ch_act[0]])
+                char_info.append((ch_show, ch_pos, ch_move[0], ch_act[0]))
             if text:
                 text_li.append((role, text, [bg, bgm, bgs, se], char_info, is_menu, is_hide_text))
         return text_li
@@ -333,7 +333,10 @@ label start:
                 # # BGM
                 if bgm_idx != current_bgm_idx:
                     bgm = bgm_li[bgm_idx]
-                    renpy.music.play(bgm, fadein=1.0, loop=True)
+                    renpy.music.play(bgm, channel = "music", fadein=1.5, loop=True)
+                    current_bgm_idx = bgm_idx
+                if bgm_idx == 0 and current_bgm_idx != 0:
+                    renpy.music.stop(channel = "music", fadeout=3.0)
                     current_bgm_idx = bgm_idx
                 # # 音效
                 if bgs_idx != 0 and bgs_idx != current_bgs_idx:
@@ -355,18 +358,22 @@ label start:
                     current_se_idx = se_idx
 
                 # # 角色
-                for i in range(6):
-                    ch_show, ch_pos, ch_move, ch_act = char_info[i]
-                    role_name = role_name_li[i]
-                    if last_state[i] == (ch_pos, ch_show, ch_act, ch_move):continue
-                    if ch_pos == 0 and ch_show != 0:
-                        ch_show = 0
-                    # 由出现到隐藏
-                    if role_shown_li[i] != 0 and ch_show == 0:
-                        e_motion = role_expressions_dict[role_name][ch_show]
-                        renpy.hide(f"{role_name} {e_motion}")
-                        role_shown_li[i] = ch_show
-                    if ch_show != 0:
+                if last_state != char_info:
+                    
+                    for i in range(6):
+                        ch_show, ch_pos, ch_move, ch_act = char_info[i]
+                        role_name = role_name_li[i]
+                        if last_state[i] == (ch_pos, ch_show, ch_act, ch_move):
+                            continue
+                        
+                        if ch_pos == 0 and ch_show != 0:
+                            ch_show = 0
+                        # 由出现到隐藏
+                        if role_shown_li[i] != 0 and ch_show == 0:
+                            e_motion = role_expressions_dict[role_name][ch_show]
+                            renpy.hide(f"{role_name} {e_motion}")
+                            role_shown_li[i] = ch_show
+                        if ch_show == 0:continue
                         e_motion = role_expressions_dict[role_name][ch_show]
                         # 渲染立绘 解析位置动作等
                         if i == 0:
@@ -375,19 +382,19 @@ label start:
                             renpy.show(f"{role_name} {e_motion}", at_list=[position_dict[ch_pos](yoffset_dict[role_name])])
 
                         role_shown_li[i] = ch_show
-                    if ch_show != 0 and ch_move != ch_pos and 1 <= ch_move <= 5:
-                        e_motion = role_expressions_dict[role_name][ch_show]
-                        transform = move_to_pos_transform(ch_move)
-                        if i == 0:
-                            renpy.show(f"{role_name} {e_motion}", at_list=[transform], zorder = 10)
-                        else:
-                            # ...
-                            renpy.show(f"{role_name} {e_motion}", at_list=[transform])
-                    if ch_act == 1:
-                        renpy.show(f"{role_name} {e_motion}", at_list=[shake_y])
-                    elif ch_act == 2:
-                        renpy.show(f"{role_name} {e_motion}", at_list=[shake_x])
-                    
+                        if ch_move != ch_pos and 1 <= ch_move <= 5:
+                            e_motion = role_expressions_dict[role_name][ch_show]
+                            transform = move_to_pos_transform(ch_move)
+                            if i == 0:
+                                renpy.show(f"{role_name} {e_motion}", at_list=[transform], zorder = 10)
+                            else:
+                                # ...
+                                renpy.show(f"{role_name} {e_motion}", at_list=[transform])
+                        if ch_act == 1:
+                            renpy.show(f"{role_name} {e_motion}", at_list=[shake_y])
+                        elif ch_act == 2:
+                            renpy.show(f"{role_name} {e_motion}", at_list=[shake_x])
+                    last_state = char_info
                 # 菜单
                 if is_menu:
                     choice_list = menu_li[menu_idx]  # 这是列表：多组 (选项文本, 剧情)
