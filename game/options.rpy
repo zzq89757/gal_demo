@@ -141,7 +141,7 @@ define config.save_directory = "gal_demo-1752933031"
 ##
 ## 在任务栏或 Dock 上显示的图标。
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/icon.ico"
 
 
 ## 构建配置 ########################################################################
