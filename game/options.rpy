@@ -167,7 +167,7 @@ init python:
     ## 将文件列为 None 来使其从构建的发行版中排除。
     ## 若要封装文件，需将其列为“archive”。
 
-    # 定义两个归档文件。
+    # 定义归档文件。
     build.archive("scripts", "all")
     build.archive("images", "all")
     build.archive("texts", "all")
