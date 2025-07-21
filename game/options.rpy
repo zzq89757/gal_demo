@@ -143,13 +143,16 @@ define config.save_directory = "gal_demo-1752933031"
 
 define config.window_icon = "gui/icon_128x.ico"
 
+# define config.screen_width = 1280  # 或1920
+# define config.screen_height = 720  # 或1080
 
+# define    config.adjust_view_size = False  # 禁止因窗口缩放而调整渲染尺寸
+# define config.keep_ratio = True   # 保持长宽比缩放
 ## 构建配置 ########################################################################
 ##
 ## 此部分控制 Ren'Py 如何将您的项目转变为发行版文件。
 
 init python:
-
     ## 以下函数接受文件模式。文件模式不区分大小写，并与基础目录的相对路径相匹配，
     ## 包括或不包括 /。如果多个模式匹配，则使用第一个模式。
     ##

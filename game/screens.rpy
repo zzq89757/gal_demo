@@ -403,7 +403,7 @@ screen main_menu():
         yalign 0.1  # 顶部对齐
         has vbox
 
-        textbutton "反馈" action OpenURL("https://docs.qq.com/smartsheet/DUmJkUktuV3BPaEpx?tab=tGsEAJ"):
+        textbutton "提交反馈" action OpenURL("https://docs.qq.com/smartsheet/DUmJkUktuV3BPaEpx?tab=tGsEAJ"):
             background "#ffffff"  # 半透明深色背景框
             hover_background "#aaa"  # 悬停背景色
             padding (20, 10)  # 背景框内边距
