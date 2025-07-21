@@ -236,7 +236,6 @@ label start:
         bgm_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/bgm") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))[1:]
         bgs_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/bgs") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))
         se_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/se") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))
-        print(bgm_li)
         role_name_li = ["role", "angel", "dead", "empire", "rider", "boss_npc", "sister"]
         yoffset_dict = {
             "role":100, "angel":200, "dead":100, "empire":0, "rider":200, "boss_npc":0, "sister":0
@@ -318,6 +317,7 @@ label start:
             current_bgs_idx = None
             current_bg_idx = None
             current_se_idx = None
+            last_state = [(0,0,0,0),(0,0,0,0),(0,0,0,0),(0,0,0,0),(0,0,0,0),(0,0,0,0)]
             for role, text, bg_idx_li, char_info, is_menu, is_hide_text in text_li:
 
                 bg_idx, bgm_idx, bgs_idx, se_idx = bg_idx_li
@@ -325,18 +325,15 @@ label start:
                 # 背景
                 if bg_idx != current_bg_idx:
                     bg_name = bg_li[bg_idx]
-                    current_bg_idx = bg_idx
                     renpy.scene()
                     renpy.show(bg_name)
-                    renpy.with_statement(fade, always=False)
+                    renpy.with_statement(fade)
                     current_bg_idx = bg_idx
 
                 # # BGM
                 if bgm_idx != current_bgm_idx:
                     bgm = bgm_li[bgm_idx]
-                    # renpy.music.stop(fadeout=1.0)
                     renpy.music.play(bgm, fadein=1.0, loop=True)
-                    # renpy.music.play("bgm/1.序章BGM.mp3", fadein=1.0)
                     current_bgm_idx = bgm_idx
                 # # 音效
                 if bgs_idx != 0 and bgs_idx != current_bgs_idx:
@@ -361,6 +358,7 @@ label start:
                 for i in range(6):
                     ch_show, ch_pos, ch_move, ch_act = char_info[i]
                     role_name = role_name_li[i]
+                    if last_state[i] == (ch_pos, ch_show, ch_act, ch_move):continue
                     if ch_pos == 0 and ch_show != 0:
                         ch_show = 0
                     # 由出现到隐藏
@@ -377,12 +375,13 @@ label start:
                             renpy.show(f"{role_name} {e_motion}", at_list=[position_dict[ch_pos](yoffset_dict[role_name])])
 
                         role_shown_li[i] = ch_show
-                    if ch_move and isinstance(ch_move, int) and 1 <= ch_move <= 5:
+                    if ch_show != 0 and ch_move != ch_pos and 1 <= ch_move <= 5:
                         e_motion = role_expressions_dict[role_name][ch_show]
                         transform = move_to_pos_transform(ch_move)
                         if i == 0:
                             renpy.show(f"{role_name} {e_motion}", at_list=[transform], zorder = 10)
                         else:
+                            # ...
                             renpy.show(f"{role_name} {e_motion}", at_list=[transform])
                     if ch_act == 1:
                         renpy.show(f"{role_name} {e_motion}", at_list=[shake_y])
