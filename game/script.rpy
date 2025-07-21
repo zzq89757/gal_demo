@@ -8,7 +8,7 @@ transform pos_1(y=0):
 
 
 transform pos_2(y=0):
-    xalign 0.5
+    xalign 0.3
     yalign 0.5
     xanchor 0.5
     yanchor 0.4
@@ -24,7 +24,7 @@ transform pos_3(y=0):
 
 
 transform pos_4(y=0):
-    xalign 0.5
+    xalign 0.7
     yalign 0.5
     xanchor 0.5
     yanchor 0.4
@@ -42,12 +42,12 @@ transform move_to_target(xpos_target=0.5, duration=0.5):
     linear duration xpos xpos_target
 
 # Y轴大幅度慢速抖动 3 次
-transform shake_y:
+transform shake_y(y=200):
     linear 0.15 yoffset -400
     linear 0.15 yoffset 400
     linear 0.15 yoffset -400
     linear 0.15 yoffset 400
-    linear 0.15 yoffset 0
+    linear 0.15 yoffset y
 
 # X轴小幅度快速抖动 5 次
 transform shake_x:
@@ -389,7 +389,7 @@ label start:
                                 # ...
                                 renpy.show(f"{role_name} {e_motion}", at_list=[transform])
                         if ch_act == 1:
-                            renpy.show(f"{role_name} {e_motion}", at_list=[shake_y])
+                            renpy.show(f"{role_name} {e_motion}", at_list=[shake_y(yoffset_dict[role_name])])
                         elif ch_act == 2:
                             renpy.show(f"{role_name} {e_motion}", at_list=[shake_x])
                     last_state = char_info
