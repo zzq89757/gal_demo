@@ -396,7 +396,20 @@ screen main_menu():
 
             # text "[config.version]":
             #     style "main_menu_version"
+    # 右上角添加反馈按钮
+    frame:
+        style "default"
+        xalign 0.95  # 右对齐
+        yalign 0.1  # 顶部对齐
+        has vbox
 
+        textbutton "反馈" action OpenURL("https://docs.qq.com/smartsheet/DUmJkUktuV3BPaEpx?tab=tGsEAJ"):
+            background "#ffffff"  # 半透明深色背景框
+            hover_background "#aaa"  # 悬停背景色
+            padding (20, 10)  # 背景框内边距
+            text_color "#000000"
+        
+            
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox
@@ -504,6 +517,8 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
+
+    
 
 
 style game_menu_outer_frame is empty
