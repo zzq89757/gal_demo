@@ -77,53 +77,53 @@ image town = im.Scale("images/bg/市区10.jpg", 1920, 1080) #根据你的分辨�
 image urben night = im.Scale("images/bg/市区11.jpg", 1920, 1080) #根据你的分辨率调整
 image room night = im.Scale("images/bg/室内 晚上12.jpg", 1920, 1080) #根据你的分辨率调整
 image room = im.Scale("images/bg/室内 白天13.jpg", 1920, 1080) #根据你的分辨率调整
-# image role stable = "images/差分/8_npc_.png"
-
-image role stable = Transform("images/差分/1_女主差分/1_女主_差分_普通.png", zoom=0.18)
-image role unhappy = Transform("images/差分/1_女主差分/1_女主_差分_不高兴.png", zoom=0.18)
-image role anger = Transform("images/差分/1_女主差分/1_女主_差分_愤怒.png", zoom=0.18)
-image role happy = Transform("images/差分/1_女主差分/1_女主_差分_开心.png", zoom=0.18)
-image role sad = Transform("images/差分/1_女主差分/1_女主_差分_伤心.png", zoom=0.18)
-image role hurt = Transform("images/差分/1_女主差分/1_女主_差分_战损.png", zoom=0.18)
-image role open_mouth = Transform("images/差分/1_女主差分/1_女主_差分_张嘴.png", zoom=0.18)
 
 
-image angel stable = Transform("images/差分/2_天使差分/2_天使_差分_普通.png", zoom=0.16)
-image angel close_eye = Transform("images/差分/2_天使差分/2_天使_差分_闭眼.png", zoom=0.16)
-image angel happy = Transform("images/差分/2_天使差分/2_天使_差分_笑.png", zoom=0.16)
-image angel sad = Transform("images/差分/2_天使差分/2_天使_差分_伤心.png", zoom=0.16)
-image angel none = Transform("images/差分/2_天使差分/2_天使_差分_面无表情.png", zoom=0.16)
-image angel anger = Transform("images/差分/2_天使差分/2_天使_差分_生气.png", zoom=0.16)
-image angel hurt = Transform("images/差分/2_天使差分/2_天使_差分_战损.png", zoom=0.16)
+image role stable = Transform("images/差分/1_女主差分/1_女主_差分_普通.webp", zoom=0.18)
+image role unhappy = Transform("images/差分/1_女主差分/1_女主_差分_不高兴.webp", zoom=0.18)
+image role anger = Transform("images/差分/1_女主差分/1_女主_差分_愤怒.webp", zoom=0.18)
+image role happy = Transform("images/差分/1_女主差分/1_女主_差分_开心.webp", zoom=0.18)
+image role sad = Transform("images/差分/1_女主差分/1_女主_差分_伤心.webp", zoom=0.18)
+image role hurt = Transform("images/差分/1_女主差分/1_女主_差分_战损.webp", zoom=0.18)
+image role open_mouth = Transform("images/差分/1_女主差分/1_女主_差分_张嘴.webp", zoom=0.18)
 
 
-image dead stable = Transform("images/差分/3_死神差分/3_死神_差分_普通.png", zoom=0.16)
-image dead dumb = Transform("images/差分/3_死神差分/2_死神_差分_呆.png", zoom=0.16)
-image dead happy = Transform("images/差分/3_死神差分/3_死神_差分_开心.png", zoom=0.16)
-image dead unhappy = Transform("images/差分/3_死神差分/3_死神_差分_不开心.png", zoom=0.16)
-image dead series = Transform("images/差分/3_死神差分/3_死神_差分_严肃.png", zoom=0.16)
-image dead anger = Transform("images/差分/3_死神差分/3_死神_差分_生气.png", zoom=0.16)
-image dead hurt = Transform("images/差分/3_死神差分/3_死神_差分_战损.png", zoom=0.16)
+image angel stable = Transform("images/差分/2_天使差分/2_天使_差分_普通.webp", zoom=0.16)
+image angel close_eye = Transform("images/差分/2_天使差分/2_天使_差分_闭眼.webp", zoom=0.16)
+image angel happy = Transform("images/差分/2_天使差分/2_天使_差分_笑.webp", zoom=0.16)
+image angel sad = Transform("images/差分/2_天使差分/2_天使_差分_伤心.webp", zoom=0.16)
+image angel none = Transform("images/差分/2_天使差分/2_天使_差分_面无表情.webp", zoom=0.16)
+image angel anger = Transform("images/差分/2_天使差分/2_天使_差分_生气.webp", zoom=0.16)
+image angel hurt = Transform("images/差分/2_天使差分/2_天使_差分_战损.webp", zoom=0.16)
 
 
-image rider stable = Transform("images/差分/5_骑士差分/5_骑士_差分_普通.png", zoom=0.14)
-image rider iijanai = Transform("images/差分/5_骑士差分/5_骑士_差分_不也挺好的吗.png", zoom=0.14)
-image rider power = Transform("images/差分/5_骑士差分/5_骑士_差分_斗志满满.png", zoom=0.14)
-image rider open_mouth = Transform("images/差分/5_骑士差分/5_骑士_差分_张嘴.png", zoom=0.14)
-image rider anger = Transform("images/差分/5_骑士差分/5_骑士_差分_生气.png", zoom=0.14)
-image rider another_type = Transform("images/差分/5_骑士差分/5_骑士_差分_生气.png", zoom=0.14)
+image dead stable = Transform("images/差分/3_死神差分/3_死神_差分_普通.webp", zoom=0.16)
+image dead dumb = Transform("images/差分/3_死神差分/2_死神_差分_呆.webp", zoom=0.16)
+image dead happy = Transform("images/差分/3_死神差分/3_死神_差分_开心.webp", zoom=0.16)
+image dead unhappy = Transform("images/差分/3_死神差分/3_死神_差分_不开心.webp", zoom=0.16)
+image dead series = Transform("images/差分/3_死神差分/3_死神_差分_严肃.webp", zoom=0.16)
+image dead anger = Transform("images/差分/3_死神差分/3_死神_差分_生气.webp", zoom=0.16)
+image dead hurt = Transform("images/差分/3_死神差分/3_死神_差分_战损.webp", zoom=0.16)
 
 
-image boss_npc homo = Transform("images/差分/7_boss/7_boss_人形.png", zoom=0.2)
-image boss_npc raw = Transform("images/差分/7_boss/7_boss_怪物.png", zoom=0.2)
-image boss_npc np6 = Transform("images/差分/8_npc_.png", zoom=0.14)
+image rider stable = Transform("images/差分/5_骑士差分/5_骑士_差分_普通.webp", zoom=0.14)
+image rider iijanai = Transform("images/差分/5_骑士差分/5_骑士_差分_不也挺好的吗.webp", zoom=0.14)
+image rider power = Transform("images/差分/5_骑士差分/5_骑士_差分_斗志满满.webp", zoom=0.14)
+image rider open_mouth = Transform("images/差分/5_骑士差分/5_骑士_差分_张嘴.webp", zoom=0.14)
+image rider anger = Transform("images/差分/5_骑士差分/5_骑士_差分_生气.webp", zoom=0.14)
+image rider another_type = Transform("images/差分/5_骑士差分/5_骑士_差分_生气.webp", zoom=0.14)
 
-image sister stable = Transform("images/差分/6_妹妹差分/6_妹妹_差分_普通.png", zoom=0.14)
-image sister happy = Transform("images/差分/6_妹妹差分/6_妹妹_差分_开心.png", zoom=0.14)
-image sister unhappy = Transform("images/差分/6_妹妹差分/6_妹妹_差分_伤心.png", zoom=0.14)
-image sister mask = Transform("images/差分/6_妹妹差分/6_妹妹_差分_面具.png", zoom=0.14)
-image sister anger = Transform("images/差分/6_妹妹差分/6_妹妹_差分_普通_生气.png", zoom=0.14)
-image sister sad = Transform("images/差分/6_妹妹差分/6_妹妹_差分_失落.png", zoom=0.14)
+
+image boss_npc homo = Transform("images/差分/7_boss/7_boss_人形.webp", zoom=0.2)
+image boss_npc raw = Transform("images/差分/7_boss/7_boss_怪物.webp", zoom=0.2)
+image boss_npc np6 = Transform("images/差分/8_npc_.webp", zoom=0.14)
+
+image sister stable = Transform("images/差分/6_妹妹差分/6_妹妹_差分_普通.webp", zoom=0.14)
+image sister happy = Transform("images/差分/6_妹妹差分/6_妹妹_差分_开心.webp", zoom=0.14)
+image sister unhappy = Transform("images/差分/6_妹妹差分/6_妹妹_差分_伤心.webp", zoom=0.14)
+image sister mask = Transform("images/差分/6_妹妹差分/6_妹妹_差分_面具.webp", zoom=0.14)
+image sister anger = Transform("images/差分/6_妹妹差分/6_妹妹_差分_普通_生气.webp", zoom=0.14)
+image sister sad = Transform("images/差分/6_妹妹差分/6_妹妹_差分_失落.webp", zoom=0.14)
 
 init python:
     config.layers += ["char_layer", "effect_layer"]
@@ -412,8 +412,8 @@ label start:
 
         
         
-        # run(prologue_text_li,menu_dict["prologue"])
-        # run(charpter1_text_li,menu_dict["charpter1"])
+        run(prologue_text_li,menu_dict["prologue"])
+        run(charpter1_text_li,menu_dict["charpter1"])
         run(charpter2_text_li,menu_dict["charpter2"])
         run(charpter3_text_li,menu_dict["charpter3"])
         run(charpter4_text_li,menu_dict["charpter4"])

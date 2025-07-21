@@ -141,7 +141,7 @@ define config.save_directory = "gal_demo-1752933031"
 ##
 ## 在任务栏或 Dock 上显示的图标。
 
-define config.window_icon = "gui/icon.ico"
+define config.window_icon = "gui/icon_128x.ico"
 
 
 ## 构建配置 ########################################################################
@@ -183,6 +183,7 @@ init python:
     build.classify('game/**.png', 'images')
     build.classify('game/**.jpg', 'images')
     build.classify('game/**.webp', 'images')
+    build.classify('game/**.ico', 'images')
 
     build.classify('game/**.mp3', 'audios')
     build.classify('game/**.wav', 'audios')
@@ -190,16 +191,15 @@ init python:
 
     build.classify('game/**.ttf', 'texts')
     build.classify('game/**.json', 'texts')
+    build.classify('game/**.txt', 'texts')
 
     build.classify('game/**.rpy*', 'scripts')
     build.classify('game/**.py', 'scripts')
 
     ## 匹配为文档模式的文件会在 Mac 应用程序构建中被复制，因此它们同时出现在 APP
     ## 和 ZIP 文件中。
-
     build.documentation('*.html')
     build.documentation('*.txt')
-
 
 ## 执行应用内购需要一个 Google Play 许可密钥。许可密钥可以在 Google Play 开发者
 ## 控制台的“Monetize” > “Monetization Setup” > “Licensing”页面找到。
