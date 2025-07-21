@@ -174,16 +174,19 @@ init python:
 
     ## 若要封装文件，需将其列为“archive”。
 
-    build.classify('game/**.png', 'archive')
-    build.classify('game/**.jpg', 'archive')
-    build.classify('game/**.rpyc', 'archive')
-    build.classify('game/**.mp3', 'archive')
-    build.classify('game/**.wav', 'archive')
-    build.classify('game/**.ttf', 'archive')
-    build.classify('game/**.ogg', 'archive')
-    build.classify('game/**.webp', 'archive')
-    build.classify('game/**.json', 'archive')
-    build.classify('game/**.py', 'archive')
+    build.classify('game/**.png', 'images')
+    build.classify('game/**.jpg', 'images')
+    build.classify('game/**.webp', 'images')
+
+    build.classify('game/**.mp3', 'audios')
+    build.classify('game/**.wav', 'audios')
+    build.classify('game/**.ogg', 'audios')
+
+    build.classify('game/**.ttf', 'texts')
+    build.classify('game/**.json', 'texts')
+
+    build.classify('game/**.rpy*', 'scripts')
+    build.classify('game/**.py', 'scripts')
 
     ## 匹配为文档模式的文件会在 Mac 应用程序构建中被复制，因此它们同时出现在 APP
     ## 和 ZIP 文件中。
