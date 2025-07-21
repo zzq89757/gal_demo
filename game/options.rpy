@@ -176,8 +176,14 @@ init python:
 
     build.classify('game/**.png', 'archive')
     build.classify('game/**.jpg', 'archive')
+    build.classify('game/**.rpyc', 'archive')
     build.classify('game/**.mp3', 'archive')
+    build.classify('game/**.wav', 'archive')
+    build.classify('game/**.ttf', 'archive')
+    build.classify('game/**.ogg', 'archive')
+    build.classify('game/**.webp', 'archive')
     build.classify('game/**.json', 'archive')
+    build.classify('game/**.py', 'archive')
 
     ## 匹配为文档模式的文件会在 Mac 应用程序构建中被复制，因此它们同时出现在 APP
     ## 和 ZIP 文件中。
