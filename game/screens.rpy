@@ -4,6 +4,27 @@
 
 init offset = -1
 
+init python:
+    desired_ratio = 16 / 9
+
+    def enforce_aspect_ratio():
+        w, h = renpy.get_physical_size()
+        current_ratio = w / h
+
+        if abs(current_ratio - desired_ratio) > 0.01:
+            if current_ratio > desired_ratio:
+                new_w = int(h * desired_ratio)
+                new_h = h
+            else:
+                new_w = w
+                new_h = int(w / desired_ratio)
+
+            renpy.set_physical_size((new_w, new_h))
+
+screen enforce_aspect_ratio_monitor():
+    timer 0.1 repeat True action Function(enforce_aspect_ratio)
+
+
 screen custom_rollback_handler():
 
     key "rollback" action ShowMenu("history")

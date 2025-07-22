@@ -302,7 +302,9 @@ init python:
             xpos_value = xalign_dict.get(pos_id, 0.5)
 
             return move_to_target(xpos_value, duration)
-
+# label before_main_menu:
+#     $ renpy.call_in_new_context(enforce_aspect_ratio_monitor)
+#     return
 label say_line(role=None, text=""):
     if role:
         $ renpy.say(role, text)
@@ -417,6 +419,9 @@ label play_scene(dialogue,menu_li = []):
             $ idx = before_subscene_idx
             $ menu_idx += 1
         $ idx += 1
+    return
+label before_main_menu:
+    show screen enforce_aspect_ratio_monitor
     return
 
 
