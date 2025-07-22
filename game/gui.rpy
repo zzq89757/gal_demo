@@ -86,7 +86,8 @@ define gui.title_text_size = 75
 ## 标题和游戏菜单 #####################################################################
 
 ## 标题菜单和游戏菜单使用的图像。
-define gui.main_menu_background = "gui/cover_1920x.jpg"
+# define gui.main_menu_background = "gui/cover_1920x.jpg"
+define gui.main_menu_background = Transform("gui/cover_1920x.jpg", size=(config.screen_width, config.screen_height))
 define gui.game_menu_background = "gui/game_menu.png"
 
 
