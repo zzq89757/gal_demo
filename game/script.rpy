@@ -404,26 +404,24 @@ label play_scene(dialogue,menu_li = []):
                                 $ renpy.show(f"{role_name} {e_motion}", at_list=[shake_x])
                 $ i += 1
             $ last_state = char_info
+        # 每一句对话作为单独回滚点
+        call say_line(role, text)
         # 菜单
         if is_menu:
             $ choice_list = menu_li[menu_idx]  # 这是列表：多组 (选项文本, 剧情)
-
             $ menu_items = [(choice_text, idx) for idx, (choice_text, _) in enumerate(choice_list)]
-
             $ choice_idx = renpy.display_menu(menu_items)
-
-            $ _, inner_text_li = choice_list[choice_idx]
-
+            $ select_text, inner_text_li = choice_list[choice_idx]
+            $ before_subscene_idx = idx
             call play_scene(inner_text_li)  # 玩家选中后再进入支线
-
+            $ idx = before_subscene_idx
             $ menu_idx += 1
-        # 每一句对话作为单独回滚点
-        call say_line(role, text)
         $ idx += 1
     return
 
 
 label start:
+    show screen custom_rollback_handler
     call play_scene(prologue_text_li,menu_dict["prologue"])
     call play_scene(charpter1_text_li,menu_dict["charpter1"])
     call play_scene(charpter2_text_li,menu_dict["charpter2"])

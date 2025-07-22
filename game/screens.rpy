@@ -4,6 +4,11 @@
 
 init offset = -1
 
+screen custom_rollback_handler():
+
+    key "rollback" action ShowMenu("history")
+    key "K_PAGEUP" action ShowMenu("history")
+    key "mousedown_4" action ShowMenu("history")  # 鼠标滚轮上滚
 
 
 ################################################################################
