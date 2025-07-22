@@ -232,7 +232,7 @@ init python:
     se_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/se") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))
     role_name_li = ["role", "angel", "dead", "empire", "rider", "boss_npc", "sister"]
     yoffset_dict = {
-        "role":100, "angel":200, "dead":100, "empire":0, "rider":200, "boss_npc":0, "sister":0
+        "role":100, "angel":360, "dead":100, "empire":0, "rider":200, "boss_npc":0, "sister":0
     }
     
     role_expressions_dict = {"role": [
