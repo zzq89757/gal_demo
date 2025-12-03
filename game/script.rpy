@@ -228,7 +228,7 @@ init python:
     charpter4_text_li = json2li("/tl/Raw/zhangjie_4.json")
     bg_li = ["black", "forest","plain", "village", "urben", "gate", "river", "ruin", "stone_road", "burnning_city", "town", "urben night", "room night", "room"]
     bgm_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/bgm") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))[1:]
-    bgs_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/bgs") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))
+    bgs_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/bgs/环境音") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))
     se_li = [None] + sorted([f for f in renpy.list_files() if f.startswith("audio/se") and f.endswith(".mp3")],key=lambda x:int(x.split("/")[-1].split(".")[0]))
     role_name_li = ["role", "angel", "dead", "empire", "rider", "boss_npc", "sister"]
     yoffset_dict = {
@@ -411,13 +411,15 @@ label play_scene(dialogue,menu_li = []):
         # 菜单
         if is_menu:
             $ choice_list = menu_li[menu_idx]  # 这是列表：多组 (选项文本, 剧情)
+            $ print(f"{menu_idx} is menu_idx")
             $ menu_items = [(choice_text, idx) for idx, (choice_text, _) in enumerate(choice_list)]
             $ choice_idx = renpy.display_menu(menu_items)
             $ select_text, inner_text_li = choice_list[choice_idx]
             $ before_subscene_idx = idx
+            $ before_menu_idx = menu_idx
             call play_scene(inner_text_li)  # 玩家选中后再进入支线
             $ idx = before_subscene_idx
-            $ menu_idx += 1
+            $ menu_idx = before_menu_idx + 1
         $ idx += 1
     return
 label before_main_menu:

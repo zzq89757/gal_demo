@@ -32,6 +32,13 @@ screen custom_rollback_handler():
     key "mousedown_4" action ShowMenu("history")  # 鼠标滚轮上滚
 
 
+init python:
+    # 主菜单按钮点击函数
+    def menu_action(action, sound_file="/audio/bgs/click/音效 - 点按按钮 - 钢琴1.mp3"):
+        """带音效的菜单动作"""
+        return [Play("sound", sound_file), action]
+
+
 ################################################################################
 ## 样式
 ################################################################################
@@ -322,8 +329,12 @@ screen navigation():
                 # idle im.Scale("gui/nevigation/start.png", 240, 60)
                 # idle start_button
                 idle Transform("gui/nevigation/start.png", zoom=0.6)
-                
-                action Start()
+                # action Start()
+                # action menu_action(Start(),"audio/bgs/click/音效-点按按钮-钢琴1.mp3")
+                if sound_type==1:
+                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-存档界面-点按按钮-火焰钟声1.mp3")
+                else:
+                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-火焰1.mp3")
 
         else:
 
@@ -335,22 +346,41 @@ screen navigation():
         imagebutton:
                 # idle im.Scale("gui/nevigation/continue.png", 240, 60)
                 idle Transform("gui/nevigation/continue.png", zoom=0.6)
-                action ShowMenu("history")
+                # action [Play("sound", "audio/bgs/环境音/6.全力跑.mp3"),ShowMenu("history")]
+                if sound_type==1:
+                    action menu_action(ShowMenu("history"),"audio/bgs/click/音效-存档界面-点按按钮-火焰钟声2.mp3")
+                else:
+                    action menu_action(ShowMenu("history"),"audio/bgs/click/音效-主页面-点按按钮-火焰2.mp3")
+
         imagebutton:
                 # idle im.Scale("gui/nevigation/load.png", 120, 60)
                 idle Transform("gui/nevigation/load.png", zoom=0.6)
-                action ShowMenu("load")
+                # action ShowMenu("load")
+                if sound_type==1:
+                    action menu_action(ShowMenu("load"),"audio/bgs/click/音效-点按按钮-钢琴1.mp3")
+                else:
+                    action menu_action(ShowMenu("load"),"audio/bgs/click/音效-主页面-点按按钮-火焰3.mp3")
+
 
         # textbutton _("设置") action ShowMenu("preferences")
         imagebutton:
                 # idle im.Scale("gui/nevigation/gallary.png", 120, 60)
                 idle Transform("gui/nevigation/gallary.png", zoom=0.6)
                 
-                action ShowMenu("preferences")
+                # action ShowMenu("preferences")
+                if sound_type==1:
+                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-点按按钮-钢琴2.mp3")
+                else:
+                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-火焰4.mp3")
+
         imagebutton:
                 # idle im.Scale("gui/nevigation/setting.png", 120, 60)
                 idle Transform("gui/nevigation/setting.png", zoom=0.6)
-                action ShowMenu("preferences")
+                # action ShowMenu("preferences")
+                if sound_type==1:
+                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-点按按钮-钢琴3.mp3")
+                else:
+                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-火焰5.mp3")
 
         if _in_replay:
 
@@ -374,7 +404,11 @@ screen navigation():
             imagebutton:
                 # idle im.Scale("gui/nevigation/exit.png", 120, 60)
                 idle Transform("gui/nevigation/exit.png", zoom=0.6)
-                action Quit(confirm=not main_menu)
+                # action Quit(confirm=True)
+                if sound_type==1:
+                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-刀剑1.mp3")
+                else:
+                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-火焰6.mp3")
 
 
 style navigation_button is gui_button
@@ -393,7 +427,7 @@ style navigation_button_text:
 ## 用于在 Ren'Py 启动时显示标题菜单。
 ##
 ## https://doc.renpy.cn/zh-CN/screen_special.html#main-menu
-
+default sound_type = 1  # 1=方案一, 2=方案二
 screen main_menu():
 
     ## 此语句可确保替换掉任何其他菜单屏幕。
@@ -422,6 +456,23 @@ screen main_menu():
 
             # text "[config.version]":
             #     style "main_menu_version"
+    # 添加测试用音效切换按钮
+    frame:
+        style "default"
+        xalign 0.8  # 右对齐
+        yalign 0.1  # 顶部对齐
+        has vbox
+
+        textbutton "音效方案[sound_type]" action ToggleVariable("sound_type", 1, 2):
+            # 根据当前方案改变文本
+            # if sound_type == 1:
+            #     text "音效方案一：启用"
+            # else:
+            #     text "音效方案二"
+            background "#ffffff"  # 半透明深色背景框
+            hover_background "#aaa"  # 悬停背景色
+            padding (20, 10)  # 背景框内边距
+            text_color "#000000"
     # 右上角添加反馈按钮
     frame:
         style "default"
