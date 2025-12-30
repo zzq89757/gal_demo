@@ -335,7 +335,8 @@ label play_scene(dialogue,menu_li = []):
         # BGM变化
         if bgm_idx != current_bgm_idx:
             $ bgm = bgm_li[bgm_idx]
-            play music bgm fadein 1.5
+            # stop music fadeout 3
+            play music bgm fadein 1
             $ current_bgm_idx = bgm_idx
 
         if bgm_idx == 0 and current_bgm_idx != 0:
@@ -428,6 +429,10 @@ label before_main_menu:
 
 
 label start:
+    stop music
+    play sound "audio/bgs/click/游戏开始前的间断处的火焰声.mp3" 
+    play music "audio/bgm/0.main_menu_bg.mp3" fadein 1
+    $ renpy.pause(0.8)
     show screen custom_rollback_handler
     call play_scene(prologue_text_li,menu_dict["prologue"])
     call play_scene(charpter1_text_li,menu_dict["charpter1"])

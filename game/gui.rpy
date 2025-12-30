@@ -234,8 +234,8 @@ define gui.file_slot_rows = 2
 
 ## 导航按钮左侧相对于屏幕左侧的位置。
 define gui.navigation_xpos = 60
-define gui.navigation_ypos = 560
-
+define gui.navigation_ypos = 460
+define gui.activate_sound = "audio/bgs/click/单机按键音效-刀剑声.mp3"
 
 ## 快进指示器的垂直位置。
 define gui.skip_ypos = 15

@@ -1,6 +1,9 @@
 ﻿################################################################################
 ## 初始化
 ################################################################################
+define config.mouse = {
+    "default": [("gui/nevigation/鼠标指针.png", 0, 0)]
+}
 
 init offset = -1
 
@@ -310,6 +313,7 @@ style quick_button_text:
 ##
 ## 该屏幕包含在标题菜单和游戏菜单中，并提供导航到其他菜单，以及启动游戏。
 
+
 screen navigation():
 
     vbox:
@@ -328,13 +332,40 @@ screen navigation():
                 # idle "gui/nevigation/start.png"
                 # idle im.Scale("gui/nevigation/start.png", 240, 60)
                 # idle start_button
-                idle Transform("gui/nevigation/start.png", zoom=0.6)
+                idle HBox(
+                    Transform(
+                        "gui/nevigation/四个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/开始游戏.png",
+                        zoom=0.6,
+                        xoffset=-280
+                    )
+                )
+                hover HBox(
+                    Transform(
+                        "gui/nevigation/四个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/开始游戏（按下）.png",
+                        zoom=0.6,
+                        xoffset=-280
+                    )
+                )
                 # action Start()
                 # action menu_action(Start(),"audio/bgs/click/音效-点按按钮-钢琴1.mp3")
-                if sound_type==1:
-                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-存档界面-点按按钮-火焰钟声1.mp3")
-                else:
-                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-火焰1.mp3")
+                # action [
+                #     Start()
+                # ]
+                action menu_action(Start(),"audio/bgs/click/继续游戏的钟声音效.mp3")
 
         else:
 
@@ -345,42 +376,140 @@ screen navigation():
         # textbutton _("读取游戏") action ShowMenu("load")
         imagebutton:
                 # idle im.Scale("gui/nevigation/continue.png", 240, 60)
-                idle Transform("gui/nevigation/continue.png", zoom=0.6)
+                idle HBox(
+                    Transform(
+                        "gui/nevigation/四个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/继续游戏.png",
+                        zoom=0.6,
+                        xoffset=-280
+                    )
+                )
+                hover HBox(
+                    Transform(
+                        "gui/nevigation/四个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/继续游戏（按下）.png",
+                        zoom=0.6,
+                        xoffset=-280
+                    )
+                )
                 # action [Play("sound", "audio/bgs/环境音/6.全力跑.mp3"),ShowMenu("history")]
-                if sound_type==1:
-                    action menu_action(ShowMenu("history"),"audio/bgs/click/音效-存档界面-点按按钮-火焰钟声2.mp3")
-                else:
-                    action menu_action(ShowMenu("history"),"audio/bgs/click/音效-主页面-点按按钮-火焰2.mp3")
+                action menu_action(ShowMenu("history"),"audio/bgs/click/继续游戏的钟声音效.mp3")
 
         imagebutton:
                 # idle im.Scale("gui/nevigation/load.png", 120, 60)
-                idle Transform("gui/nevigation/load.png", zoom=0.6)
+                idle HBox(
+                    Transform(
+                        "gui/nevigation/两个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/存档.png",
+                        zoom=0.6,
+                        xoffset=-180
+                    )
+                )
+                hover HBox(
+                    Transform(
+                        "gui/nevigation/两个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/存档（按下）.png",
+                        zoom=0.6,
+                        xoffset=-180
+                    )
+                )
                 # action ShowMenu("load")
-                if sound_type==1:
-                    action menu_action(ShowMenu("load"),"audio/bgs/click/音效-点按按钮-钢琴1.mp3")
-                else:
-                    action menu_action(ShowMenu("load"),"audio/bgs/click/音效-主页面-点按按钮-火焰3.mp3")
+                action menu_action(ShowMenu("load"),"audio/bgs/click/单机按键音效-刀剑声.mp3")
 
 
         # textbutton _("设置") action ShowMenu("preferences")
         imagebutton:
                 # idle im.Scale("gui/nevigation/gallary.png", 120, 60)
-                idle Transform("gui/nevigation/gallary.png", zoom=0.6)
+                idle HBox(
+                    Transform(
+                        "gui/nevigation/两个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/画廊.png",
+                        zoom=0.6,
+                        xoffset=-180
+                    )
+                )
+                hover HBox(
+                    Transform(
+                        "gui/nevigation/两个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/画廊（按下）.png",
+                        zoom=0.6,
+                        xoffset=-180
+                    )
+                )
+
                 
                 # action ShowMenu("preferences")
-                if sound_type==1:
-                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-点按按钮-钢琴2.mp3")
-                else:
-                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-火焰4.mp3")
+                action menu_action(ShowMenu("preferences"),"audio/bgs/click/单机按键音效-刀剑声.mp3")
 
         imagebutton:
                 # idle im.Scale("gui/nevigation/setting.png", 120, 60)
-                idle Transform("gui/nevigation/setting.png", zoom=0.6)
+                
+                idle HBox(
+                    Transform(
+                        "gui/nevigation/两个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/设置.png",
+                        zoom=0.6,
+                        xoffset=-180
+                    )
+                )
+                hover HBox(
+                    Transform(
+                        "gui/nevigation/两个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/设置（按下）.png",
+                        zoom=0.6,
+                        xoffset=-180
+                    )
+                )
                 # action ShowMenu("preferences")
-                if sound_type==1:
-                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-点按按钮-钢琴3.mp3")
-                else:
-                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-火焰5.mp3")
+                action menu_action(ShowMenu("preferences"),"audio/bgs/click/单机按键音效-刀剑声.mp3")
 
         if _in_replay:
 
@@ -403,12 +532,35 @@ screen navigation():
             # textbutton _("退出") action Quit(confirm=not main_menu)
             imagebutton:
                 # idle im.Scale("gui/nevigation/exit.png", 120, 60)
-                idle Transform("gui/nevigation/exit.png", zoom=0.6)
-                # action Quit(confirm=True)
-                if sound_type==1:
-                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-刀剑1.mp3")
-                else:
-                    action menu_action(ShowMenu("preferences"),"audio/bgs/click/音效-主页面-点按按钮-火焰6.mp3")
+                idle HBox(
+                    Transform(
+                        "gui/nevigation/两个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/退出.png",
+                        zoom=0.6,
+                        xoffset=-180
+                    )
+                )
+                hover HBox(
+                    Transform(
+                        "gui/nevigation/两个字的预备高光.png",
+                        zoom=0.6,
+                        alpha=0.8,
+                        xoffset=-10
+                    ),
+
+                    Transform(
+                        "gui/nevigation/退出（按下）.png",
+                        zoom=0.6,
+                        xoffset=-180
+                    )
+                )
+                action menu_action(Quit(confirm=True),"audio/bgs/click/单机按键音效-刀剑声.mp3")
 
 
 style navigation_button is gui_button
@@ -428,6 +580,7 @@ style navigation_button_text:
 ##
 ## https://doc.renpy.cn/zh-CN/screen_special.html#main-menu
 default sound_type = 1  # 1=方案一, 2=方案二
+default ui_type = 1  # 1=方案一, 2=方案二
 screen main_menu():
 
     ## 此语句可确保替换掉任何其他菜单屏幕。
@@ -456,23 +609,35 @@ screen main_menu():
 
             # text "[config.version]":
             #     style "main_menu_version"
-    # 添加测试用音效切换按钮
+
+            
+    # 添加测试用ui切换按钮
     frame:
         style "default"
-        xalign 0.8  # 右对齐
+        xalign 0.68  # 右对齐
         yalign 0.1  # 顶部对齐
         has vbox
 
-        textbutton "音效方案[sound_type]" action ToggleVariable("sound_type", 1, 2):
-            # 根据当前方案改变文本
-            # if sound_type == 1:
-            #     text "音效方案一：启用"
-            # else:
-            #     text "音效方案二"
-            background "#ffffff"  # 半透明深色背景框
-            hover_background "#aaa"  # 悬停背景色
-            padding (20, 10)  # 背景框内边距
-            text_color "#000000"
+
+    # 添加测试用音效切换按钮
+    frame:
+        style "default"
+        xalign 0.82  # 右对齐
+        yalign 0.1  # 顶部对齐
+        has vbox
+
+        # textbutton "音效方案[sound_type]" action ToggleVariable("sound_type", 1, 2):
+        #     # 根据当前方案改变文本
+        #     # if sound_type == 1:
+        #     #     text "音效方案一：启用"
+        #     # else:
+        #     #     text "音效方案二"
+        #     background "#ffffff"  # 半透明深色背景框
+        #     hover_background "#aaa"  # 悬停背景色
+        #     padding (20, 10)  # 背景框内边距
+        #     text_color "#000000"
+
+
     # 右上角添加反馈按钮
     frame:
         style "default"
@@ -588,8 +753,11 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     textbutton _("返回"):
         style "return_button"
 
-        action Return()
-
+        action [
+            
+            Return(),
+            Play("sound","audio/bgs/click/单机按键音效-刀剑声.mp3")
+        ]
     label title
 
     if main_menu:
@@ -1276,8 +1444,8 @@ screen confirm(message, yes_action, no_action):
                 xalign 0.5
                 spacing 150
 
-                textbutton _("确定") action yes_action
-                textbutton _("取消") action no_action
+                textbutton _("确定") action [Play("sound","audio/bgs/click/单机按键音效-刀剑声.mp3"),yes_action]
+                textbutton _("取消") action [Play("sound","audio/bgs/click/单机按键音效-刀剑声.mp3"),no_action]
 
     ## 右键点击退出并答复 no（取消）。
     key "game_menu" action no_action
